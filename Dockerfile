@@ -22,7 +22,7 @@ ARG CADDY_CBROTLI_VERSION=v1.0.1
 # fp-mu-plugin tag to bake into the image. Set to an empty string at build
 # time to skip baking entirely (e.g. for a base image consumed by a site
 # that supplies its own mu-plugins via composer install).
-ARG FP_MU_PLUGIN_VERSION="v0.1.0"
+ARG FP_MU_PLUGIN_VERSION="v0.1.1"
 
 # ---------- Builder ----------
 FROM dunglas/frankenphp:${FRANKENPHP_VERSION}-builder-php${PHP_VERSION} AS builder
