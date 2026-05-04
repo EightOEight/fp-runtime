@@ -53,6 +53,14 @@ FROM dunglas/frankenphp:${FRANKENPHP_VERSION}-php${PHP_VERSION} AS runtime
 
 COPY --from=builder /usr/local/bin/frankenphp /usr/local/bin/frankenphp
 
+# Strip the file capability that xcaddy's XCADDY_SETCAP=1 stamped on the
+# binary (cap_net_bind_service=ep). The platform contract is that we
+# bind FP_PORT (default 8080) — a high port — so the cap is unused, and
+# its presence on the binary makes the kernel REFUSE to exec under
+# `no_new_privs` (which Kubernetes' securityContext.allowPrivilegeEscalation:
+# false sets). Stripping it lets fp-charts ship with hardened defaults.
+RUN setcap -r /usr/local/bin/frankenphp
+
 # WP-friendly PHP extensions. Memcached kept available for the wp object-cache drop-in
 # (separate concern from Souin's HTTP cache, which uses Redis).
 RUN install-php-extensions \
