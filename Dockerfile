@@ -23,7 +23,8 @@ RUN CGO_ENABLED=1 \
         --with github.com/dunglas/frankenphp=./ \
         --with github.com/dunglas/frankenphp/caddy=./caddy/ \
         --with github.com/dunglas/caddy-cbrotli \
-        --with github.com/caddyserver/cache-handler
+        --with github.com/caddyserver/cache-handler \
+        --with github.com/darkweak/storages/go-redis/caddy
 
 # ---------- Runtime ----------
 FROM dunglas/frankenphp:php${PHP_VERSION} AS runtime
