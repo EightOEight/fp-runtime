@@ -18,14 +18,6 @@ extends. CI builds a multi-arch manifest list (`linux/amd64` +
 `linux/arm64`) for each supported PHP minor; see
 [Published tags](#published-tags) for the tag schema.
 
-## Status
-
-🚧 Under construction. Phase 1 in progress.
-- **Phase 0** ([PR #1](https://github.com/EightOEight/fp-runtime/pull/1)) —
-  tech-lead spike validating FrankenPHP + Caddy + Souin. See [`PHASE-0.md`](./PHASE-0.md).
-- **Phase 1** (this branch) — version pinning, env-driven config,
-  fp-mu-plugin baking mechanism, CI workflow.
-
 ## What's in the image
 
 | Component | Version | Notes |
@@ -172,6 +164,6 @@ make ci
 | Repo | Purpose |
 |---|---|
 | [`fp-runtime`](https://github.com/EightOEight/fp-runtime) (this repo) | Base container image |
-| [`fp-mu-plugin`](https://github.com/EightOEight/fp-mu-plugin) | Slim WordPress must-use plugin (URL fixer, Souin invalidator, metrics, object cache) |
+| [`fp-mu-plugin`](https://github.com/EightOEight/fp-mu-plugin) | Slim WordPress must-use plugin (S3 uploads bootstrap, Souin invalidator, Site Health overrides, SMTP mailer) |
 | [`fp-site-template`](https://github.com/EightOEight/fp-site-template) | GitHub template for new sites — Bedrock-layout WordPress with S3 uploads |
 | [`fp-charts`](https://github.com/EightOEight/fp-charts) | Helm chart `fp-site` for Kubernetes deployment |
